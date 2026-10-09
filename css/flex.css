@@ -1,0 +1,64 @@
+.flex{
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+.justify-start{
+    justify-content: start;
+}
+.justify-end{
+    justify-content: end;
+}
+.align-start{
+    align-content: start;
+}
+.align-center{
+    align-content: center;
+}
+.align-end{
+    align-content: end;
+}
+
+/* start cols */
+.col-12{
+    width: 12/12;
+}
+.col-11{
+    width: 11/12;
+}
+.col-10{
+    width: 10/12;
+}
+.col-9{
+    width: 9/12;
+}
+.col-8{
+    width: 8/12;
+}
+.col-7{
+    width: 7/12;
+}
+.col-6{
+    width: 6/12;
+}
+.col-5{
+    width: 5/12;
+}
+.col-4{
+    width: 4/12;
+}
+.col-3{
+    width: 3/12;
+}
+.col-2{
+    width: 2/12;
+}
+.col-1{
+    width: 1/12;
+}
+/* finish cols */
