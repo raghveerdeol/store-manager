@@ -1,15 +1,17 @@
 <?php
     require './services/route.service.php';
     require './services/functions.php';
+    require './Database.php';
 
-    $url = $_SERVER['REQUEST_URI'];
-    $parsedUrl = parse_url($url);
+    $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
     $path = $parsedUrl['path'];
     $routeTo = getRouterPage($path);
 
     require $routeTo['controller'];
 
-    //connect to db
+    $config = require ('config.php');
+    $db = new Database($config);
+
 
 ?>
 
