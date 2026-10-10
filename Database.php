@@ -13,10 +13,10 @@ class Database
         ]);
     }
 
-    public function query(string $query)
+    public function query(string $query, array $binds = [])
     {
         $statement = $this->connection->prepare($query);
-        $statement->execute();
+        $statement->execute($binds);
         return $statement;
     }
 
