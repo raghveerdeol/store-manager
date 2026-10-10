@@ -1,21 +1,17 @@
 <?php
 
-$routes = [
+$userRoute = require('./routes/partials/users.routes.php');
+$basicRoutes = [
     [
         'link' => '/dashboard',
         'title' => 'Dashboard',
         'controller' => './controllers/dashboard.php',
         'function' => 'index',
         'view' => './views/dashboard/index.view.php'
-    ],
-    [
-        'link' => '/users',
-        'title' => 'Users',
-        'controller' => './controllers/user.php',
-        'function' => 'index',
-        'view' => './views/user/index.view.php'
-    ],
+    ]
 ];
+
+$routes = array_merge($userRoute, $basicRoutes);
 
 $pageNotFoundRoute = [
         'link' => '/pageNotFound',

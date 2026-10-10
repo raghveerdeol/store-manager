@@ -5,10 +5,10 @@ function isEven(int $num) : bool
     return $num % 2 === 0 ? true : false;
 }
 
-function getTableColumns(array $table) : array
+//passare alla funzione solo un'elemento della tabella
+function getTableColumns(array $singleElement) : array
 {
     $columns = [];
-    $singleElement = $table[0];
     foreach ($singleElement as $key => $value) {
         $columns[] = $key;
     }

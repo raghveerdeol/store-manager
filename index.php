@@ -6,7 +6,7 @@
     $config = require ('config.php');
     $db = new Database($config);
 
-    require $routeTo['controller'];
+    require_once $routeTo['controller'];
     $pageData = $routeTo['function']($db);
 ?>
 
@@ -22,10 +22,10 @@
     </head>
     <body>
         <nav>
-            <?php require './globalComponents/nav.php' ?>
+            <?php require_once './globalComponents/nav.php' ?>
         </nav>
         <main>
-            <?php require $routeTo['view'] ?>
+            <?php require $pageData['view'] ?>
         </main>
     </body>
 </html>
