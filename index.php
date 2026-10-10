@@ -1,7 +1,15 @@
 <?php
     require './services/route.service.php';
-    $uri = $_SERVER['REQUEST_URI'];
-    $routeTo = getRouterPage($uri);
+    require './services/functions.php';
+
+    $url = $_SERVER['REQUEST_URI'];
+    $parsedUrl = parse_url($url);
+    $path = $parsedUrl['path'];
+    $routeTo = getRouterPage($path);
+
+    require $routeTo['controller'];
+
+    //connect to db
 
 ?>
 
@@ -13,6 +21,7 @@
         <title><?= $routeTo['title'] ?></title>
         <link rel="stylesheet" href="./css/general.css"/>
         <link rel="stylesheet" href="./css/flex.css"/>
+        <link rel="stylesheet" href="./css/text.css"/>
     </head>
     <body>
         <nav>

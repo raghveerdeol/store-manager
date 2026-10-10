@@ -14,9 +14,5 @@ function getRouterPage(string $uri) : array
         }
     }
 
-    if(!$searchedRoute){
-        return $pageNotFoundRoute;
-    } else {
-        return $searchedRoute;
-    }
+    return !$searchedRoute ? $pageNotFoundRoute : $searchedRoute; 
 }
