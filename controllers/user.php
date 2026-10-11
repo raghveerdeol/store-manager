@@ -6,7 +6,7 @@ function index($db) : array
     $users = $db->query($query)->fetchAll();
     return [
         'view' => './views/user/index.view.php',
-        'users' => $users,
+        'data' => $users,
         'actions' => [
             'view',
             'create',
@@ -18,12 +18,11 @@ function index($db) : array
 
 function show($db) : array
 {
-    $id = $_GET['id'];
     $query = 'Select id, name, email, created_at, updated_at from users where id = :id';
-    $user = $db->query($query, ['id' => $id])->fetch();
+    $user = $db->query($query, ['id' => $_GET['id']])->fetch();
     return [
         'view' => './views/user/show.view.php',
-        'user' => $user,
+        'data' => $user,
         'actions' => [
             'edit',
             'delete'
@@ -33,8 +32,30 @@ function show($db) : array
 
 function createView() : array
 {
+
+    $formData = [
+        [
+            'type' => 'text',
+            'name' => 'name',
+            'label' => 'Name',
+            'placeholder' => 'Mario',
+            'required' => true,
+            'cols' => '3'
+        ],
+        [
+            'type' => 'text',
+            'name' => 'email',
+            'placeholder' => 'exemple@mail.com',
+            'label' => 'Email',
+            'required' => true,
+            'cols' => '3'
+        ],
+    ];
+
     return [
-        'view' => './views/user/create.view.php'
+        'view' => './views/user/create.view.php',
+        'title' => 'User',
+        'formData' => $formData
     ];
 }
 
@@ -47,15 +68,14 @@ function create()
 
 function editView($db) : array
 {
-    $id = $_GET['id'];
     $query = 'Select * from users where id = :id';
-    $user = $db->query($query, ['id' => $id])->fetch();
+    $user = $db->query($query, ['id' => $_GET['id']])->fetch();
     return [
         'view' => './views/user/edit.view.php',
-        'user' => $user,
+        'data' => $user,
         'actions' => [
             'view',
-            'delete'
+            'delete',
         ]
     ];
 }

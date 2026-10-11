@@ -2,5 +2,7 @@
 
 function index ()
 {
-    return 'Dashboard';
+    return [
+        'view' => './views/dashboard/index.view.php'
+    ];
 }

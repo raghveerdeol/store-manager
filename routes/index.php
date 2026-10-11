@@ -7,16 +7,14 @@ $basicRoutes = [
         'title' => 'Dashboard',
         'controller' => './controllers/dashboard.php',
         'function' => 'index',
-        'view' => './views/dashboard/index.view.php'
     ]
 ];
 
 $routes = array_merge($userRoute, $basicRoutes);
 
 $pageNotFoundRoute = [
-        'link' => '/pageNotFound',
-        'title' => 'Page not found',
-        'controller' => './controllers/notFound.php',
-        'function' => 'index',
-        'view' => './views/notFound.view.php'
-    ];
+    'link' => '/pageNotFound',
+    'title' => 'Page not found',
+    'controller' => './controllers/notFound.php',
+    'function' => 'index',
+];

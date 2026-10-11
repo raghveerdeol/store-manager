@@ -2,5 +2,7 @@
 
 function index ()
 {
-    return 'Not Found';
+    return [
+        'view' => './views/notFound.view.php'
+    ];
 }
