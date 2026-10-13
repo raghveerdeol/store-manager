@@ -59,8 +59,19 @@ function createView() : array
     ];
 }
 
-function create()
+function create(array $data, $db) : array
 {
+    $validate = [
+        'name' => 'string,required',
+        'email' => 'email,required',
+    ];
+    $validated = formValidator($validate, $data);
+    if(validateError($validated)){
+        return [
+            'error' => validateError($validated)
+        ];
+    }
+
     //query creazione
 
     //redirect alla view
