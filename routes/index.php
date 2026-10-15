@@ -1,6 +1,7 @@
 <?php
 
 $userRoute = require('./routes/partials/users.routes.php');
+$tagRoute = require('./routes/partials/tags.routes.php');
 $basicRoutes = [
     [
         'link' => '/dashboard',
@@ -10,7 +11,7 @@ $basicRoutes = [
     ]
 ];
 
-$routes = array_merge($userRoute, $basicRoutes);
+$routes = array_merge($userRoute, $basicRoutes, $tagRoute);
 
 $pageNotFoundRoute = [
     'link' => '/pageNotFound',

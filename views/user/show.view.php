@@ -1,7 +1,7 @@
 <?php
-    $user = $pageData['data'];
+    $dataView = $pageData['data'];
     $actions = $pageData['actions'];
-    $columns = getTableColumns($user);
+    $columns = getTableColumns($dataView);
 ?>
 
 <div class="w-full">
@@ -11,7 +11,7 @@
             <?php foreach ($actions as $key => $action) { ?>
                 <?php if($action === 'edit') { ?>
                     <a 
-                        href="users/edit?id=<?= $user['id'] ?>" 
+                        href="users/edit?id=<?= $dataView['id'] ?>" 
                         class="px-4 py-2 rounded-md bg-blue-400"
                     >
                         edit
@@ -25,7 +25,7 @@
                     <?= str_replace('_', ' ', $column) ?>
                 </div>
                 <div>
-                    <?= $user[$column] ?>
+                    <?= $dataView[$column] ?>
                 </div>
             </div>
         <?php } ?>

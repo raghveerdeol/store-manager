@@ -2,6 +2,7 @@
     $elements = $pageData['data'];
     $actions = $pageData['actions'];
     $columns = getTableColumns($elements[0]);
+    $path = $pageData['path'] ?? null;
 ?>
 
 <div>

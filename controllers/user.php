@@ -2,23 +2,22 @@
 
 function index($db) : array
 {
-    $query = 'Select id, name, email, created_at, updated_at from users';
+    $query = 'SELECT id, name, email, created_at, updated_at from users';
     $users = $db->query($query)->fetchAll();
     return [
         'view' => './views/user/index.view.php',
         'data' => $users,
+        'path' => 'users',
+        'title' => 'Users',
         'actions' => [
-            'view',
-            'create',
-            'edit',
-            'delete'
+            'view'
         ]
     ];
 }
 
 function show($db) : array
 {
-    $query = 'Select id, name, email, created_at, updated_at from users where id = :id';
+    $query = 'SELECT id, name, email, created_at, updated_at from users where id = :id';
     $user = $db->query($query, ['id' => $_GET['id']])->fetch();
     return [
         'view' => './views/user/show.view.php',
@@ -33,68 +32,21 @@ function show($db) : array
 function createView() : array
 {
 
-    $formData = [
-        [
-            'type' => 'text',
-            'name' => 'name',
-            'label' => 'Name',
-            'placeholder' => 'Mario',
-            'required' => true,
-            'cols' => '3'
-        ],
-        [
-            'type' => 'text',
-            'name' => 'email',
-            'placeholder' => 'exemple@mail.com',
-            'label' => 'Email',
-            'required' => true,
-            'cols' => '3'
-        ],
-    ];
-
-    return [
-        'view' => './views/user/create.view.php',
-        'title' => 'User',
-        'formData' => $formData
-    ];
 }
 
-function create(array $data, $db) : array
+function create(array $data, $db)
 {
-    $validate = [
-        'name' => 'string,required',
-        'email' => 'email,required',
-    ];
-    $validated = formValidator($validate, $data);
-    if(validateError($validated)){
-        return [
-            'error' => validateError($validated)
-        ];
-    }
 
-    //query creazione
-
-    //redirect alla view
 }
 
 function editView($db) : array
 {
-    $query = 'Select * from users where id = :id';
-    $user = $db->query($query, ['id' => $_GET['id']])->fetch();
-    return [
-        'view' => './views/user/edit.view.php',
-        'data' => $user,
-        'actions' => [
-            'view',
-            'delete',
-        ]
-    ];
+
 }
 
-function edit($db) : array
+function edit(array $data, $db)
 {
-    $id = $_GET['id'];
-    //query edit
+
 }
 
 function delete($db) : array

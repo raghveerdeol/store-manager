@@ -9,6 +9,11 @@
             'title' => 'users',
             'icon' => 'fa-user',
             'link' => '/users'
+        ],
+        [
+            'title' => 'tags',
+            'icon' => 'fa-tag',
+            'link' => '/tags'
         ]
     ]
 ?>

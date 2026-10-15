@@ -63,3 +63,11 @@ function validateError(array $inputs) : ?array
     }
     return $error ? ['error' => $error, 'name' => $inputName] : null;
 }
+
+function clearInput($input)
+{
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input);
+    return $input;
+}

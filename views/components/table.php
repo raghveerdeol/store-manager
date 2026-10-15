@@ -4,7 +4,7 @@
 		<div class="py-8">
 			<div class="flex flex-row justify-between w-full bg-blue-100 shadow px-4 sm:px-8 py-4 rounded-t-md border-b-2 border-white">
 				<h2 class="text-2xl leading-tight">
-					Users
+					<?= $pageData['title'] ?>
 				</h2>
 				<div class="text-end">
 					<form class="flex w-full max-w-sm space-x-3">
@@ -16,10 +16,12 @@
 						</button>
 					</form>
 				</div>
-                <a 
-                    href="users/create"
-                    class="rounded-md py-2 px-4 bg-blue-400"
-                >create</a>
+				<?php if(in_array('create', $actions) && $path) { ?>
+					<a					
+					    href="<?=  $path.'/create' ?>"
+						class="rounded-md py-2 px-4 bg-blue-400"
+					>create</a>
+				<?php } ?>
 			</div>
 			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
 				<div class="inline-block min-w-full shadow rounded-b-md overflow-hidden">
@@ -46,21 +48,28 @@
                                             </p>
                                         </td>
                                     <?php } ?>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <?php foreach ($actions as $key => $action) { ?>
-                                            <?php if($action === 'view') { ?>
-                                                <a 
-                                                    href="users/view?id=<?= $element['id'] ?>"
-                                                    class="rounded-md py-2 px-4 bg-blue-400" 
-                                                >view</a>
-                                            <?php } ?>
-                                            <?php if($action === 'edit') { ?>
-                                                <a 
-                                                    href="users/edit"
-                                                    class="rounded-md py-2 px-4 bg-green-400"
-                                                >edit</a>
-                                            <?php } ?>
-                                        <?php } ?>
+                                    <td class="px-5 py-5">
+										<div class="d-flex justify-end align-center">
+											<?php foreach ($actions as $key => $action) { ?>
+												<?php if($action === 'view' && $path) { ?>
+													<a 
+														href="<?= $path ?>/view?id=<?= $element['id'] ?>"
+														class="rounded-md py-2 px-4 bg-blue-400" 
+													>view</a>
+												<?php } ?>
+												<?php if($action === 'edit') { ?>
+													<form action="<?= $path ?>/edit" method="GET">
+														<input type="hidden" name="id" value="<?= $element['id'] ?>">
+														<button
+															class="text-white bg-blue-500 hover:bg-blue-700 hover:cursor-pointer font-medium rounded-md text-sm px-5 py-2.5 text-center"
+															name="submit"
+															value="editView"
+															type="submit"
+														>Edit</button>
+													</form>
+												<?php } ?>
+											<?php } ?>
+										</div>
                                     </td>
                                 </tr>
                             <?php } ?>
