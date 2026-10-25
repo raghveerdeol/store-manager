@@ -3,6 +3,6 @@
 function index ()
 {
     return [
-        'view' => './views/notFound.view.php'
+        'view' => view('notFound.view.php')
     ];
 }

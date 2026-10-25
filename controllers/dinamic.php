@@ -5,7 +5,7 @@ function index($db) : array
     $query = 'SELECT id, name, description from tags ORDER BY created_at DESC';
     $users = $db->query($query)->fetchAll();
     return [
-        'view' => './views/tag/index.view.php',
+        'view' => view('tag/index.view.php'),
         'data' => $users,
         'path' => 'tags',
         'title' => 'Tags',
@@ -23,7 +23,7 @@ function show($db) : array
     $query = 'SELECT * from tags where id = :id';
     $tag = $db->query($query, ['id' => $_GET['id']])->fetch();
     return [
-        'view' => './views/tag/show.view.php',
+        'view' => view('tag/show.view.php'),
         'data' => $tag,
         'actions' => [
             'edit',
@@ -55,7 +55,7 @@ function createView() : array
     ];
 
     return [
-        'view' => './views/tag/create.view.php',
+        'view' => view('tag/create.view.php'),
         'title' => 'Create tag',
         'formData' => $formData
     ];
@@ -119,7 +119,7 @@ function editView($db) : array
     ])->fetch();
 
     return [
-        'view' => './views/tag/edit.view.php',
+        'view' => view('tag/edit.view.php'),
         'title' => 'Edit tag',
         'formData' => $formData,
         'elementData' => $element

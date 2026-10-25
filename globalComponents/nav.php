@@ -6,15 +6,10 @@
             'link' => '/dashboard'
         ],
         [
-            'title' => 'users',
-            'icon' => 'fa-user',
-            'link' => '/users'
+            'title' => 'Settings',
+            'icon' => 'fa-setting',
+            'link' => '/settings'
         ],
-        [
-            'title' => 'tags',
-            'icon' => 'fa-tag',
-            'link' => '/tags'
-        ]
     ]
 ?>
 
@@ -79,10 +74,10 @@
       </a>
       <ul class="space-y-2 font-medium">
         <?php foreach($sidebarItems as $item) { ?>
-         <li>
+          <li>
             <a 
                 href="<?= $item['link'] ?>" 
-                class="flex items-center px-2 py-1.5 text-body border border-blue-400 rounded-md hover:bg-blue-400 <?php echo activeUrl($item['link'], $path) ? 'bg-blue-400' : '' ?>"
+                class="flex items-center px-2 py-1.5 text-body border border-blue-400 rounded-md hover:bg-blue-400 <?php echo $route->activeUrl($item['link'], $parsedUrl) ? 'bg-blue-400' : '' ?>"
             >
                 <i class="fa-regular <?= $item['icon'] ?>"></i>
                 <span class="ms-3"><?= $item['title'] ?></span>

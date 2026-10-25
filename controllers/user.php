@@ -5,7 +5,7 @@ function index($db) : array
     $query = 'SELECT id, name, email, created_at, updated_at from users';
     $users = $db->query($query)->fetchAll();
     return [
-        'view' => './views/user/index.view.php',
+        'view' => view('/user/index.view.php'),
         'data' => $users,
         'path' => 'users',
         'title' => 'Users',
@@ -20,7 +20,7 @@ function show($db) : array
     $query = 'SELECT id, name, email, created_at, updated_at from users where id = :id';
     $user = $db->query($query, ['id' => $_GET['id']])->fetch();
     return [
-        'view' => './views/user/show.view.php',
+        'view' => view('user/show.view.php'),
         'data' => $user,
         'actions' => [
             'edit',

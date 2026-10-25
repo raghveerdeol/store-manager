@@ -1,21 +1,12 @@
 <?php
 
-$userRoute = require('./routes/partials/users.routes.php');
-$tagRoute = require('./routes/partials/tags.routes.php');
-$basicRoutes = [
-    [
-        'link' => '/dashboard',
-        'title' => 'Dashboard',
-        'controller' => './controllers/dashboard.php',
-        'function' => 'index',
-    ]
-];
+$route->get('/dahboard', 'dashboard.php', 'index');
+$route->get('/settings', 'settings.php', 'index');
+$route->get('/settings/create', 'settings.php', 'create');
+$route->post('/settings', 'settings.php', 'store');
+$route->delete('/settings', 'settings.php', 'delete');
 
-$routes = array_merge($userRoute, $basicRoutes, $tagRoute);
+// cerco la rotta nella tabella pages
+// $searchedRoute = [];
 
-$pageNotFoundRoute = [
-    'link' => '/pageNotFound',
-    'title' => 'Page not found',
-    'controller' => './controllers/notFound.php',
-    'function' => 'index',
-];
+// $routes = array_merge($searchedRoute, $basicRoutes);

@@ -15,59 +15,20 @@ function getTableColumns(array $singleElement) : array
     return $columns;
 }
 
-function formValidator(array $validate, $formData) : array
+function base_path($path)
 {
-    $validatedData = null;
-    foreach ($validate as $key => $data) {
-        $rules = explode(',', $data);
-        $rowValidtion = [];
-        foreach ($rules as $rule) {
-            $rowValidtion[$rule] = getValidation($formData[$key], $rule);
-        }
-        $validatedData[$key] = $rowValidtion;
-    }
-    return $validatedData;
+    return BASE_PATH . $path;
 }
 
-function getValidation($formData ,string $rule)
+//load a view page, use it in a controller
+function view($path, $attributes = [])
 {
-    switch ($rule){
-        case 'required' :
-            return !empty($formData);
-        case 'string' :
-            return is_string($formData);
-        case 'integer' :
-            return is_int($formData);
-        case 'bool' :
-            return is_bool($formData);
-        case 'email' :
-            return filter_var($formData, FILTER_VALIDATE_EMAIL);
-    }
+    // extract variable with key name
+    extract($attributes);
+    return base_path('views/'.$path);
 }
 
-function validateError(array $inputs) : ?array
+function controller($path)
 {
-    $error = null;
-    $inputName = null;
-    foreach ($inputs as $key => $input) {
-        foreach ($input as $rule => $validate) {
-            if($validate === false) {
-                $inputName = $input;
-                $error = $key . ' is not a ' . $rule;
-                break;
-            }
-        }
-        if($error){
-            break;
-        }
-    }
-    return $error ? ['error' => $error, 'name' => $inputName] : null;
-}
-
-function clearInput($input)
-{
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
+    return base_path('controllers/'.$path);
 }

@@ -1,8 +1,9 @@
 <?php
 
-function index ()
+function index()
 {
     return [
-        'view' => './views/dashboard/index.view.php'
+        'view' => view('dashboard/index.view.php'),
+        'title' => 'Dashboard'
     ];
 }
