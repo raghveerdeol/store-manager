@@ -64,7 +64,7 @@ class Route
        return $url === $path || $url === ('/'.$path);
     }
         
-    protected function normalizeUri(array $uri) : string
+    public function normalizeUri(array $uri) : string
     {
         $normalizedUri = '';
         $uriArray = array_values(array_filter($uri));

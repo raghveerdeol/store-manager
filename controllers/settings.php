@@ -41,7 +41,7 @@ function show($db) : array
     ];
 }
 
-function createView() : array
+function create() : array
 {
 
     $tableColumns = [
@@ -70,7 +70,7 @@ function createView() : array
     ];
 }
 
-function create(array $data, $db)
+function store($db, array $data)
 {
     $validate = [
         'name' => 'string,required',
@@ -98,7 +98,7 @@ function create(array $data, $db)
     return $hasError ? 'error' : 'success';
 }
 
-function editView($db) : array
+function edit($db) : array
 {
     $formData = [
         [
@@ -135,7 +135,7 @@ function editView($db) : array
     ];
 }
 
-function edit(array $data, $db)
+function update(array $data, $db)
 {
     $validate = [
         'name' => 'string,required',

@@ -5,5 +5,5 @@
 ?>
 
 <div>
-    <?php require './views/components/table.php' ?>
+    <?php require view('components/table.php') ?>
 </div>

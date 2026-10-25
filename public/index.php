@@ -27,6 +27,6 @@
     $db = new Database($config);
 
     require controller($routeTo['controller']);
-    $pageData = $routeTo['action']();
+    $pageData = $routeTo['action']($db);
     require view("layout.php");
 ?>
